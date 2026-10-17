@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173b5e">
+<meta name="description" content="Calculadora educativa de impuestos federales de Estados Unidos para el año fiscal 2025.">
+<title>Taxes Fáciles USA · Año fiscal 2025</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#192b3b;background:#f3f6f9;font-size:17px}*{box-sizing:border-box}body{margin:0}header{background:#173b5e;color:white;padding:22px max(18px,calc((100% - 1000px)/2))}header h1{margin:0 0 7px;font-size:clamp(25px,4vw,34px)}header p{margin:0;line-height:1.5}.wrap{max-width:1000px;margin:auto;padding:18px}.panel{background:white;border:1px solid #d7e0e8;border-radius:14px;padding:20px;margin:0 0 16px;box-shadow:0 2px 8px #142b3d0a}.notice{background:#fff8e8;border-left:5px solid #c58a13;padding:13px 15px;line-height:1.5;border-radius:5px}.privacy{background:#eaf6ef;border-left:5px solid #238052;padding:13px 15px;line-height:1.5;border-radius:5px}h2{font-size:23px;margin:0 0 14px}h3{font-size:19px;margin:22px 0 10px}p{line-height:1.55}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field label{font-weight:700;line-height:1.4}.help{font-size:14px;color:#506477;line-height:1.45}.field input,.field select{width:100%;padding:12px;border:1px solid #aebdca;border-radius:8px;font:inherit;background:white;color:#182b3b}.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.check{display:flex;gap:9px;align-items:flex-start;line-height:1.45}.check input{width:20px;height:20px;flex:0 0 auto;margin-top:2px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}button,.btn{border:0;border-radius:8px;padding:12px 17px;font-size:16px;font-weight:700;cursor:pointer;background:#1769aa;color:white;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#e7edf3;color:#18354d}button.danger{background:#9b2c2c}button:focus,input:focus,select:focus{outline:3px solid #8ac5ff;outline-offset:2px}.result{border:1px solid #b9d4e8;border-radius:10px;padding:15px;margin-top:12px}.money{font-size:27px;font-weight:800;color:#145f8f}.line{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid #e1e7ec}.line span:last-child{text-align:right;font-weight:700}.warning{border-left:4px solid #c58a13;padding:10px 13px;background:#fff8e8;margin:9px 0;line-height:1.5}.good{border-left:4px solid #238052;padding:10px 13px;background:#eaf6ef;margin:9px 0;line-height:1.5}.hidden{display:none!important}.small{font-size:14px;color:#526579}.sources a{overflow-wrap:anywhere}.step{font-size:14px;color:#526579;margin-bottom:8px}.footer{font-size:14px;color:#526579;padding:5px 0 30px;line-height:1.6}.print-only{display:none}.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:650px){.grid,.checks{grid-template-columns:1fr}.panel{padding:15px}.wrap{padding:12px}.line{gap:10px}}@media print{body{background:white;color:black;font-size:11pt}header{background:white;color:black;padding:0 0 15px;border-bottom:2px solid black}.wrap{max-width:none;padding:0}.panel{box-shadow:none;border:0;border-radius:0;padding:8px 0;margin:0}.no-print,button,.actions{display:none!important}.print-only{display:block}.result{break-inside:avoid}.footer{padding:10px 0}.warning,.notice,.privacy{background:white;border:1px solid #999}}
+</style>
+</head>
+<body>
+<header>
+<h1 id="appTitle">Taxes Fáciles USA</h1>
+<p id="subtitle">Entiende tus impuestos federales · Año fiscal 2025</p>
+</header>
+<main class="wrap">
+<section class="panel no-print">
+<div class="grid">
+<div class="field"><label for="language" id="languageLabel">Idioma / Language</label><select id="language"><option value="es">Español</option><option value="en">English</option></select></div>
+<div class="field"><label for="taxYear" id="yearLabel">Año fiscal / Tax year</label><input id="taxYear" value="2025" readonly></div>
+</div>
+<p id="intro">Responde solo lo que sabes. Puedes dejar campos en cero si no corresponden. La aplicación explicará los cálculos y las cuestiones que debes revisar.</p>
+<div class="notice" id="disclaimer"><strong>Importante:</strong> esta aplicación es educativa. No presenta declaraciones, no envía información al IRS y no garantiza reembolsos ni resultados fiscales.</div>
+<div class="privacy" id="privacyNotice"><strong>Privacidad:</strong> tus respuestas se calculan en este navegador. No creamos una cuenta ni enviamos tus respuestas fiscales a este servidor. No escribas tu número de Seguro Social, nombre completo ni dirección.</div>
+</section>
+<form id="taxForm" class="no-print" autocomplete="off">
+<section class="panel">
+<div class="step" id="step1">PASO 1 DE 5</div><h2 id="statusHeading">Tu situación familiar</h2>
+<div class="grid">
+<div class="field"><label for="status" id="statusLabel">Estado civil fiscal</label><select id="status"><option value="single">Soltero/a</option><option value="mfj">Casado/a, declaración conjunta</option><option value="mfs">Casado/a, declaración separada</option><option value="hoh">Cabeza de familia</option><option value="qss">Cónyuge sobreviviente que reúne los requisitos</option></select><div class="help" id="statusHelp">El estado fiscal depende de las reglas del IRS, no solo de cómo te describas.</div></div>
+<div class="field"><label for="age" id="ageLabel">Tu edad al final de 2025</label><input id="age" type="number" min="0" max="120" value="40"><div class="help" id="ageHelp">Se usa para revisar reglas para personas de 65 años o más.</div></div>
+<div class="field"><label for="spouseAge" id="spouseAgeLabel">Edad de tu cónyuge (si corresponde)</label><input id="spouseAge" type="number" min="0" max="120" value="40"></div>
+<div class="field"><label for="blind" id="blindLabel">¿Eres legalmente ciego/a según las reglas fiscales?</label><select id="blind"><option value="no">No</option><option value="yes">Sí</option></select></div>
+<div class="field"><label for="spouseBlind" id="spouseBlindLabel">¿Tu cónyuge reúne esa condición?</label><select id="spouseBlind"><option value="no">No</option><option value="yes">Sí</option></select></div>
+<div class="field"><label for="dependents" id="dependentsLabel">Número de posibles dependientes</label><input id="dependents" type="number" min="0" max="30" value="0"><div class="help" id="dependentsHelp">El número por sí solo no determina si alguien califica.</div></div>
+</div>
+</section>
+<section class="panel">
+<div class="step" id="step2">PASO 2 DE 5</div><h2 id="incomeHeading">Ingresos del año</h2>
+<p id="incomeHelp">Introduce cantidades anuales en dólares. No restes impuestos retenidos de los ingresos.</p>
+<div class="grid">
+<div class="field"><label for="wages" id="wagesLabel">Salarios W-2</label><input id="wages" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="interest" id="interestLabel">Intereses bancarios imponibles</label><input id="interest" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="dividends" id="dividendsLabel">Dividendos ordinarios</label><input id="dividends" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="unemployment" id="unemploymentLabel">Compensación por desempleo</label><input id="unemployment" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="socialSecurity" id="socialSecurityLabel">Beneficios del Seguro Social recibidos</label><input id="socialSecurity" type="number" min="0" step=".01" value="0"><div class="help" id="socialSecurityHelp">La parte imponible requiere un cálculo separado y depende de otros ingresos.</div></div>
+<div class="field"><label for="capitalGain" id="capitalGainLabel">Ganancia neta de capital (estimada)</label><input id="capitalGain" type="number" step=".01" value="0"><div class="help" id="capitalGainHelp">Ventas de inversiones pueden requerir Form 8949 y Schedule D.</div></div>
+<div class="field"><label for="otherIncome" id="otherIncomeLabel">Otros ingresos imponibles (estimación)</label><input id="otherIncome" type="number" step=".01" value="0"><div class="help" id="otherIncomeHelp">Incluye aquí solo cantidades que ya sabes que son imponibles y no has introducido antes.</div></div>
+<div class="field"><label for="withholding" id="withholdingLabel">Impuesto federal retenido en formularios W-2/1099</label><input id="withholding" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="estimatedPayments" id="estimatedPaymentsLabel">Pagos estimados y otros pagos aplicables</label><input id="estimatedPayments" type="number" min="0" step=".01" value="0"></div>
+</div>
+</section>
+<section class="panel">
+<div class="step" id="step3">PASO 3 DE 5</div><h2 id="deductionHeading">Deducciones y ajustes</h2>
+<div class="grid">
+<div class="field"><label for="deductionChoice" id="deductionChoiceLabel">Tipo de deducción</label><select id="deductionChoice"><option value="standard">Deducción estándar estimada</option><option value="itemized">Deducciones detalladas (Schedule A)</option></select><div class="help" id="deductionChoiceHelp">Las deducciones detalladas requieren una revisión de sus categorías y límites.</div></div>
+<div class="field"><label for="itemized" id="itemizedLabel">Total de deducciones detalladas elegibles</label><input id="itemized" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="adjustments" id="adjustmentsLabel">Otros ajustes deducibles (estimación)</label><input id="adjustments" type="number" min="0" step=".01" value="0"><div class="help" id="adjustmentsHelp">No introduzcas aquí de nuevo la mitad del impuesto por cuenta propia si el motor ya la calcula.</div></div>
+<div class="field"><label for="tips" id="tipsLabel">Propinas que podrían calificar para Schedule 1-A</label><input id="tips" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="overtime" id="overtimeLabel">Compensación por horas extra que podría calificar</label><input id="overtime" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="vehicleInterest" id="vehicleInterestLabel">Interés de préstamo de vehículo que podría calificar</label><input id="vehicleInterest" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="seniorDeduction" id="seniorDeductionLabel">¿Quieres revisar la deducción adicional para mayores?</label><select id="seniorDeduction"><option value="no">No / no sé si califico</option><option value="yes">Sí, revisar si califico</option></select></div>
+</div>
+<div class="warning" id="schedule1aWarning">Las deducciones de Schedule 1-A tienen condiciones, límites, requisitos de documentación y posibles reducciones por ingresos. Introducir una cantidad no significa que automáticamente califique.</div>
+</section>
+<section class="panel">
+<div class="step" id="step4">PASO 4 DE 5</div><h2 id="businessHeading">Trabajo por cuenta propia o pequeño negocio</h2>
+<div class="grid">
+<div class="field"><label for="businessIncome" id="businessIncomeLabel">Ingresos brutos del negocio</label><input id="businessIncome" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="businessExpenses" id="businessExpensesLabel">Gastos comerciales potencialmente deducibles</label><input id="businessExpenses" type="number" min="0" step=".01" value="0"></div>
+<div class="field"><label for="businessMiles" id="businessMilesLabel">Millas comerciales documentadas</label><input id="businessMiles" type="number" min="0" step=".1" value="0"><div class="help" id="businessMilesHelp">Tarifa estándar 2025: $0.70 por milla elegible. No cuentes el mismo vehículo dos veces si ya incluiste el gasto.</div></div>
+<div class="field"><label for="mileageMethod" id="mileageMethodLabel">¿Cómo registraste el vehículo?</label><select id="mileageMethod"><option value="none">No reclamar millas</option><option value="standard">Usar tarifa estándar de millaje</option><option value="actual">Usar gastos reales (incluidos en gastos)</option></select></div>
+</div>
+<div class="warning" id="businessWarning">La app ofrece una estimación inicial para un negocio individual sencillo. Depreciación, inventario, uso de vivienda, pérdidas, empleados, elecciones fiscales y otras reglas pueden requerir formularios y cálculos adicionales.</div>
+</section>
+<section class="panel">
+<div class="step" id="step5">PASO 5 DE 5</div><h2 id="reviewHeading">Revisar y calcular</h2>
+<div class="checks">
+<label class="check"><input id="confirmed" type="checkbox"><span id="confirmedText">He revisado las cantidades y no he contado dos veces los ingresos o gastos.</span></label>
+<label class="check"><input id="noSSN" type="checkbox"><span id="noSSNText">No he escrito aquí mi SSN, dirección ni datos personales identificativos.</span></label>
+</div>
+<div class="actions">
+<button type="submit" id="calculateBtn">Calcular y explicar</button>
+<button type="button" class="secondary" id="demoBtn">Cargar ejemplo ficticio</button>
+<button type="button" class="secondary" id="clearBtn">Borrar todo</button>
+</div>
+<p class="small" id="verifyHelp">Los resultados son estimaciones educativas. Verifica los formularios e instrucciones oficiales del año fiscal correspondiente.</p>
+</section>
+</form>
+<section id="results" class="panel hidden" aria-live="polite">
+<h2 id="resultsHeading">Tu estimación</h2><div id="resultContent"></div>
+<div class="actions no-print"><button id="printBtn">Generar guía imprimible</button><button class="secondary" id="officialBtn">Ver formularios originales del IRS</button><button class="secondary" id="editBtn">Volver a revisar</button></div>
+</section>
+<section class="panel sources no-print">
+<h2 id="sourcesHeading">Fuentes oficiales</h2>
+<ul>
+<li><a href="https://www.irs.gov/forms-pubs/about-form-1040" target="_blank" rel="noopener">Form 1040 y guía oficial</a></li>
+<li><a href="https://www.irs.gov/instructions/i1040gi" target="_blank" rel="noopener">Instrucciones 2025 de Form 1040</a></li>
+<li><a href="https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf" target="_blank" rel="noopener">Schedule 1-A oficial 2025</a></li>
+<li><a href="https://www.irs.gov/instructions/i1040sc" target="_blank" rel="noopener">Instrucciones 2025 de Schedule C</a></li>
+<li><a href="https://www.irs.gov/instructions/i1040sse" target="_blank" rel="noopener">Instrucciones 2025 de Schedule SE</a></li>
+<li><a href="https://www.irs.gov/forms-instructions" target="_blank" rel="noopener">Buscar otros formularios e instrucciones</a></li>
+</ul>
+</section>
+<div class="footer" id="footerText">No afiliado al IRS. Esta herramienta no ofrece asesoramiento legal o fiscal individual, no transmite declaraciones y no garantiza resultados. Las reglas pueden cambiar; confirma siempre las instrucciones oficiales.</div>
+</main>
+<script src="/static/tax_data.js"></script>
+<script src="/static/tax_engine.js"></script>
+<script src="/static/pdf_engine.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
